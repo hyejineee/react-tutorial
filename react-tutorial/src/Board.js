@@ -21,10 +21,14 @@ export default function Board(){
         setSquares(squaresCopy)
         setXIsNext(!xIsNext)
     };
+
+    const status = `Next player:${xIsNext?'X':'O'}`;
         
     return(
         <div>
-            <div className="status"></div>
+            <div className="status">
+                {status}
+            </div>
             
             <div className="square-container">
                 {initSquares()}

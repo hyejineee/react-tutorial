@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import Square from './Square'
+import calculateWinner from './Helper'
 import './tutorial.css';
 
 export default function Board(){
@@ -17,14 +18,19 @@ export default function Board(){
 
     const clickSquare = (index)=>{
         const squaresCopy = [...squares]
+        if (calculateWinner(squaresCopy) || squaresCopy[index]) {
+            return;
+        }
         squaresCopy[index] = xIsNext?'X':'O';
         setSquares(squaresCopy)
         setXIsNext(!xIsNext)
     };
 
-    const status = `Next player:${xIsNext?'X':'O'}`;
+    const winner =calculateWinner(squares);
+    const status = winner!==null?`Winner: ${winner}`:`Next player:${xIsNext?'X':'O'}`;
         
     return(
+        
         <div>
             <div className="status">
                 {status}

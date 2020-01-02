@@ -26,7 +26,6 @@ export default function Board() {
   const status = winner !== null ? `Winner: ${winner}` : `Next player:${xIsNext ? 'X' : 'O'}`;
 
   return (
-
     <div>
       <div className="status">
         {status}
